@@ -39,7 +39,9 @@ void main() {
 
   /* Other Variable Declarations Go Here */
   /* Statistics and Printing Functions Go Here */
-
+print_statistics(test,SIZE);
+printf("\n sorted array=");
+print_array(test,SIZE);
 
 
 }
@@ -48,37 +50,97 @@ void main() {
 
 void print_array(unsigned char* a ,unsigned int n)
 {
+   
+      int i;
+ for(i=0;i<n;i++)
+{
+ printf("%d,",a[i]);
+}
 
 }
 /**************************************************************************/
 unsigned char find_maximum(unsigned char* a ,unsigned int n)
 {
-
+     unsigned char max=a[0];
+   int i;
+   for(i=1;i<n;i++)
+    {
+      if(max<a[i])
+       {
+         max=a[i];
+        }
+      }
+ return max;
 }
 /**************************************************************************/
 unsigned char find_minimum(unsigned char* a ,unsigned int n)
 {
+	unsigned char min=a[0];
+   int i;
+   for(i=1;i<n;i++)
+    {
+      if(min>a[i])
+       {
+         min=a[i];
+        }
+      }
+ return min;
 }
 /**************************************************************************/
  float find_mean(unsigned char* a , unsigned int n)
 {
+	 int sum=a[0];
+    float mean=0;
+   int i;
+   for(i=1;i<n;i++)
+    {
+      sum=sum+a[i];
+     }
+
+   mean=(float)sum/(float)(n);
+ return mean;
 
 }
 /***************************************************************************/
 void sort_array(unsigned char* a , unsigned int n)
 {
-
+    int i,j;
+  for(i=0;i<n-1;i++)
+   {
+      for(j=0;j<(n-1)-i;j++)
+       {
+         if(a[j]<a[j+1])
+          {
+              a[j]=a[j]+a[j+1];
+              a[j+1]=a[j]-a[j+1];
+              a[j]=a[j]-a[j+1];
+           }
+        }
+     }
 
  }
 /**************************************************************************/
 float find_median(unsigned char* a , unsigned int n)
 {
+	sort_array(a,n);
+  float median=0.0;
+ if(n%2!=0)
+ {
+   median=a[n/2];
+  }
+ else{
+      median= ((float)(a[n/2]+a[((n/2)-1)]))/2 ;
+      }
+      return median;
 
 }
 /************************************************************************/
 void print_statistics(unsigned char* a , unsigned int n)
 {
-
+  printf("\nmaximum value=%d\n",find_maximum(a,n));
+  printf("minimum value=%d\n",find_minimum(a,n));
+  printf("mean=%0.2f\n",find_mean(a,n));
+  printf("median=%0.2f\n",find_median(a,n));
 }
 /**************************************************************************/
 
