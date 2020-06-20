@@ -1,4 +1,4 @@
-/* Add Author and Project Details here */
+/* Auther : Shimaa mahmoud */
 /* 
 @brief <performs statistical analytics on a dataset>
  *
